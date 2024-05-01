@@ -1,0 +1,59 @@
+version: '3.5'
+services:
+  api1: # API - Instância 01
+    image: api:v1
+    environment:
+      ASPNETCORE_ENVIRONMENT: 'Development'
+    hostname: api1
+    depends_on:
+      - db
+    ports:
+      - "8080:5203"
+    deploy:
+      resources:
+        limits:
+          cpus: '0.35'
+          memory: '0.75GB'
+
+  api2: # API - Instância 02
+    image: api:v1
+    environment:
+      ASPNETCORE_ENVIRONMENT: 'Development'    
+    hostname: api2
+    depends_on:
+      - db
+    ports:
+      - "8081:5203"
+    deploy:
+      resources:
+        limits:
+          cpus: '0.35'
+          memory: '0.75GB'
+
+  nginx: # Load Balancer
+    image: nginx:latest
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro    
+    depends_on:
+      - api1
+      - api2
+    ports:
+      - "9999:9999"
+    deploy:
+      resources:
+        limits:
+          cpus: '0.3'
+          memory: '0.5GB'
+
+  db: # Banco de dados
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: 'api'
+      POSTGRES_PASSWORD: '@pibackend'
+    ports:
+      - "5432:5432"    
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: '2.0GB'

@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>f4ca5ffe-2d3e-431e-b610-e8bbc4260e62</UserSecretsId>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.1.35" />
+    <PackageReference Include="Npgsql" Version="8.0.2" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />    
+    <Reference Include="AutoCRUD">
+      <HintPath>..\AutoCRUD\bin\Release\net8.0\AutoCRUD.dll</HintPath>
+    </Reference>
+    <!-- <ProjectReference Include="..\AutoCRUD\AutoCRUD.csproj" /> -->
+  </ItemGroup>
+</Project>
