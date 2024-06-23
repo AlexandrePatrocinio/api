@@ -5,18 +5,17 @@ ARG TARGETARCH
 WORKDIR /source
 
 # copy csproj and restore as distinct layers
-COPY /bin/Debug/net8.0/. /AutoCRUD/bin/Release/net8.0/.
-COPY *.csproj /api/.
-WORKDIR /api
+COPY *.csproj ./api/
+WORKDIR ./api
 RUN dotnet restore -a $TARGETARCH
 
 # copy and publish app and libraries
 COPY . .
-RUN dotnet publish -a $TARGETARCH -o /app --self-contained
+RUN dotnet publish -c release -a $TARGETARCH -o /app --self-contained
 
 # final stage/image
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
-COPY --from=build /app .
+COPY --from=build /app ./
 USER $APP_UID
-ENTRYPOINT ["./api"]
+ENTRYPOINT ["dotnet", "api.dll"]
