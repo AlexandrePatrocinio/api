@@ -1,0 +1,5 @@
+FROM postgres:latest AS pg
+WORKDIR /
+
+COPY pg_script.sql /docker-entrypoint-initdb.d/.
+COPY postgres-passwd /run/secrets/.

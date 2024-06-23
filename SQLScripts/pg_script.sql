@@ -1,4 +1,6 @@
-	CREATE EXTENSION IF NOT EXISTS pg_trgm;
+    \c api;
+    
+    CREATE EXTENSION IF NOT EXISTS pg_trgm;
 
 	CREATE TABLE IF NOT EXISTS Persons(
                         ID uuid NOT NULL,
@@ -12,7 +14,7 @@
                         PRIMARY KEY (ID)
                     );
                     
-                    CREATE INDEX IF NOT EXISTS idx_search on Persons USING gist (Search gist_trgm_ops);
+                    CREATE INDEX IF NOT EXISTS idx_search_person on Persons USING gist (Search gist_trgm_ops);
 
                     CREATE INDEX IF NOT EXISTS idx_alias on Persons USING btree (Alias);
 
@@ -30,6 +32,6 @@
                         PRIMARY KEY (ID)
                     );
                     
-                    CREATE INDEX IF NOT EXISTS idx_search on Companies USING gist (Search gist_trgm_ops);
+                    CREATE INDEX IF NOT EXISTS idx_search_companies on Companies USING gist (Search gist_trgm_ops);
 
                     CREATE INDEX IF NOT EXISTS idx_TradeName on Companies USING btree (TradeName);
