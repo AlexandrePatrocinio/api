@@ -15,7 +15,7 @@ Clone o projeto localmente em seu computador com o commando git clone.
 Para gerar a imagem docker da api, necessaria a execucao do docker-compose, execute o commando abaixo a partir da raiz do projeto onde se encontra o arquivo dockerfile :
 docker build -t api:v1 .
 
-Enseguida, defina a senha do usuario root postgres no arquivo postgres-passwd. Ele sera copiado para dentro da imagem quando ela for gerada.
+Enseguida, defina a senha do usuario root postgres no arquivo postgres-passwd na pasta SQLScripts. Ele sera copiado para dentro da imagem quando ela for gerada.
 
 Não se esqueça de modificar também a connectionstring dos arquivos appsettings.json na pasta Configuration com a senha definida na etapa anterior. A pasta Configuration sera mapeada em um volume dentro do conteiner docker da api para facilitar as configurações si necessarias. 
 
@@ -42,7 +42,7 @@ Clonez le projet localement sur votre ordinateur avec la commande git clone.
 Pour générer l'image docker de l'api, nécessaire pour exécuter le docker-compose, exécutez la commande ci-dessous à partir de la racine du projet où se trouve le fichier dockerfile :
 docker build -t api:v1 .
 
-Ensuite, définissez le mot de passe de l'utilisateur root postgres dans le fichier postgres-passwd. Il sera copié à l'intérieur de l'image lorsqu'elle sera générée.
+Ensuite, définissez le mot de passe de l'utilisateur root postgres dans le fichier postgres-passwd depuis le dossier SQLScripts. Il sera copié à l'intérieur de l'image lorsqu'elle sera générée.
 
 N'oubliez pas de modifier également la connectionstring des fichiers appsettings.json dans le dossier Configuration avec le mot de passe défini à l'étape précédente. Le dossier Configuration sera mappé dans un volume à l'intérieur du conteneur docker de l'api pour faciliter les configurations si nécessaire.
 
@@ -69,7 +69,7 @@ Clone the project locally on your computer with the git clone command.
 To generate the docker image of the api, necessary to run the docker-compose, execute the command below from the root of the project where the dockerfile is located: 
 docker build -t api:v1 .
 
-Next, set the password for the postgres root user in the postgres-passwd file. It will be copied into the image when it is generated.
+Next, set the password for the postgres root user in the postgres-passwd file from SQLScripts folder. It will be copied into the image when it is generated.
 
 Don’t forget to also modify the connectionstring of the appsettings.json files in the Configuration folder with the password defined in the previous step. The Configuration folder will be mapped in a volume inside the docker container of the api to facilitate the configurations if necessary.
 
