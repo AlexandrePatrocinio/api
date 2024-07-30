@@ -1,5 +1,5 @@
 using AutoCRUD.Data;
-using AutoCRUD.Data.NpgSql;
+using AutoCRUD.Data.SqlClient;
 using AutoCRUD.Models;
 using AutoCRUD.Services;
 using api.Models;
@@ -30,7 +30,7 @@ public class ServicePersonValidation<E> : IServiceAutoCRUDValidation<E> where E 
         if(!validation.Valid) return validation;
         
         var person = (Person)(validation.Entity ?? Entity);
-        var personrepository = (NpgSqlRepository<Person>)repository;
+        var personrepository = (SqlClientRepository<Person>)repository;
 
         if (string.IsNullOrWhiteSpace(person.Name) || string.IsNullOrWhiteSpace(person.Alias)) return (false, person);
 
@@ -55,7 +55,7 @@ public class ServicePersonValidation<E> : IServiceAutoCRUDValidation<E> where E 
         if(!validation.Valid) return validation;
         
         var person = (Person)(validation.Entity ?? Entity);
-        var personrepository = (NpgSqlRepository<Person>)repository;
+        var personrepository = (SqlClientRepository<Person>)repository;
 
         if (string.IsNullOrWhiteSpace(person.Name) || string.IsNullOrWhiteSpace(person.Alias)) return (false, person);
 
