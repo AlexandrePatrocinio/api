@@ -2,7 +2,7 @@ using AutoCRUD.Models;
 
 namespace api.Models;
 
-public class Companie : IEntity {
+public class Companie : IEntity<Guid> {
         public Guid Id { get; set; }
 
         public string TradeName { get; set; } = string.Empty;

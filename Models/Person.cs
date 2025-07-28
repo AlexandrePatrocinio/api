@@ -2,7 +2,7 @@ using AutoCRUD.Models;
 
 namespace api.Models
 {
-    public class Person : IEntity
+    public class Person : IEntity<Guid>
     {
         public Guid Id { get; set; }
         public string Alias { get; set; } = string.Empty;
@@ -20,10 +20,10 @@ namespace api.Models
             Id = Guid.NewGuid();
             Alias = alias ?? throw new ArgumentNullException(nameof(alias));
             Name = name ?? throw new ArgumentNullException(nameof(name));
-            DateTime date; 
+            DateTime date;
             if (DateTime.TryParse(birthdate, out date))
-                Birthdate =  date;
-            else 
+                Birthdate = date;
+            else
                 throw new ArgumentException(nameof(birthdate));
         }
     }
