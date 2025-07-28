@@ -6,13 +6,14 @@
     <UserSecretsId>f4ca5ffe-2d3e-431e-b610-e8bbc4260e62</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Dapper" Version="2.1.35" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="8.0.0" />
-    <PackageReference Include="Npgsql" Version="8.0.3" />
-    <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />    
-    <Reference Include="AutoCRUD">
+    <PackageReference Include="Dapper" Version="2.1.66" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="9.0.6" />
+    <PackageReference Include="Npgsql" Version="9.0.3" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
+    <PackageReference Include="AutoCRUD" Version="0.7.0" />
+    <!-- <Reference Include="AutoCRUD">
       <HintPath>.\AutoCRUD\AutoCRUD.dll</HintPath>
-    </Reference>
+    </Reference> -->
     <!-- <ProjectReference Include="..\AutoCRUD\AutoCRUD.csproj" /> -->
   </ItemGroup>
 </Project>
