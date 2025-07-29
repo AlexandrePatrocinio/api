@@ -4,6 +4,9 @@ FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG TARGETARCH
 WORKDIR /source
 
+# Copy nuget.config first
+COPY nuget.config ./api/
+
 # copy csproj and restore as distinct layers
 COPY *.csproj ./api/
 WORKDIR ./api

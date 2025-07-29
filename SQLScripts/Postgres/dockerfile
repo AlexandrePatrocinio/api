@@ -1,0 +1,7 @@
+FROM postgres:latest AS pg
+WORKDIR /
+
+COPY init.sh /docker-entrypoint-initdb.d/.
+COPY pg_script.sql /docker-entrypoint-initdb.d/.
+COPY postgres-passwd /run/secrets/.
+RUN chmod +x /docker-entrypoint-initdb.d/init.sh

@@ -1,6 +1,6 @@
-version: '3.5'
 services:
-  api1: # API - Instância 01
+  api1: # API - Instance 1
+    build: .
     image: api:v1
     volumes:
       - ./Configuration:/app/Configuration    
@@ -17,7 +17,8 @@ services:
           cpus: '0.35'
           memory: '0.75GB'
 
-  api2: # API - Instância 02
+  api2: # API - Instance 2
+    build: .
     image: api:v1
     volumes:
       - ./Configuration:/app/Configuration
@@ -48,8 +49,8 @@ services:
         limits:
           cpus: '0.3'
           memory: '0.5GB'
-
-  db: # Banco de dados
+  db: # Postgres tests
+    build: SQLScripts/Postgres/.
     image: postgres:api
     environment:
       POSTGRES_DB: 'api'
@@ -61,3 +62,16 @@ services:
         limits:
           cpus: '1'
           memory: '2.0GB'
+  # db: # SQL Server tests
+  #   build: SQLScripts/Sqlserver/.
+  #   image: sqlserver:api
+  #   environment:
+  #     ACCEPT_EULA: 'Y'
+  #     MSSQL_SA_PASSWORD: ${SA_PASSWORD}
+  #   ports:
+  #     - "1433:1433"
+  #   deploy:
+  #     resources:
+  #       limits:
+  #         cpus: '1'
+  #         memory: '3.0GB'

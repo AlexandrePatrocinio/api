@@ -4,7 +4,7 @@
 
 	CREATE TABLE IF NOT EXISTS Persons(
                         ID uuid NOT NULL,
-                        Alias varchar(32) unique NOT NULL,
+                        Alias varchar(32) NOT NULL,
                         Name varchar(100) NOT NULL,
                         Birthdate timestamp NOT NULL,
                         Stack varchar(4000),
@@ -22,8 +22,8 @@
 	CREATE TABLE IF NOT EXISTS Companies(
                         ID uuid NOT NULL,                        
                         TradeName varchar(100) NOT NULL,
-	      BusinessSector varchar(32) unique NOT NULL,
-	      NumberEmployees int,
+	                    BusinessSector varchar(32) NOT NULL,
+                        NumberEmployees int,
                         FoundingDate timestamp NOT NULL,
                         ServiceProductCatalog varchar(4000),
                         Search varchar(1160) generated always as (

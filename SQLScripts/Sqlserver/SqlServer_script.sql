@@ -1,14 +1,24 @@
-	create DATABASE api
+    IF NOT EXISTS (
+        SELECT name 
+        FROM sys.databases 
+        WHERE name = N'api'
+    )
+    BEGIN
+        CREATE DATABASE api;
+    END
     GO
 
     use api
     GO
 
+    SET QUOTED_IDENTIFIER ON;
+    GO
+
     IF OBJECT_ID(N'dbo.Persons', N'U') IS NULL
-	begin
+	BEGIN
         CREATE TABLE Persons (
             ID uniqueidentifier NOT NULL,
-            Alias nvarchar(32) NOT NULL,
+            Alias nvarchar(32) unique NOT NULL,
             Name varchar(100) NOT NULL,
             Birthdate datetime NOT NULL,
             Stack nvarchar(4000),
@@ -19,17 +29,14 @@
         IF OBJECT_ID(N'dbo.idx_search', N'IX') IS NULL
             CREATE INDEX idx_search ON Persons (Search);
 
-        IF OBJECT_ID(N'dbo.idx_alias', N'IX') IS NULL
-            CREATE INDEX idx_alias ON Persons (Alias);
-	end
-
+	END
 
 	IF OBJECT_ID(N'dbo.Companies', N'U') IS NULL
-	begin
+	BEGIN
         CREATE TABLE Companies(
             ID uniqueidentifier NOT NULL,                        
-            TradeName nvarchar(100) NOT NULL,
-            BusinessSector nvarchar(32) unique NOT NULL,
+            TradeName nvarchar(100) unique NOT NULL,
+            BusinessSector nvarchar(32) NOT NULL,
             NumberEmployees int,
             FoundingDate datetime NOT NULL,
             ServiceProductCatalog nvarchar(4000),
@@ -42,6 +49,4 @@
         IF OBJECT_ID(N'dbo.idx_search', N'IX') IS NULL
             CREATE INDEX idx_search ON Companies (Search);                   
 
-        IF OBJECT_ID(N'dbo.idx_tradename', N'IX') IS NULL
-            CREATE INDEX idx_tradename ON Companies (TradeName);
-    end
+    END
