@@ -12,15 +12,15 @@ Existe um balanceamento de carga usando o nginx, pois há duas instancias da API
 
 Clone o projeto localmente em seu computador com o commando git clone.
 
-Para gerar a imagem docker da api, necessaria a execucao do docker-compose, execute o commando abaixo a partir da raiz do projeto onde se encontra o arquivo dockerfile :
-docker build -t api:v1 .
+Defina a senha do usuario root postgres no arquivo .env na raiz do projeto. Ele sera usado pelo arquivo docker-compose.yml para construir a imagem docker da base de dados de testes.
 
-Enseguida, defina a senha do usuario root postgres no arquivo postgres-passwd na pasta SQLScripts. Ele sera copiado para dentro da imagem quando ela for gerada.
+Não se esqueça de modificar também a connectionstring dos arquivos appsettings.json na pasta Configuration com a senha definida na etapa anterior. A pasta Configuration sera mapeada em um volume dentro do conteiner docker da api para facilitar as configurações si necessarias.
 
-Não se esqueça de modificar também a connectionstring dos arquivos appsettings.json na pasta Configuration com a senha definida na etapa anterior. A pasta Configuration sera mapeada em um volume dentro do conteiner docker da api para facilitar as configurações si necessarias. 
+O docker-compose foi configurado para construir as imagens automaticamente mas se freferir você podera executar o commando abaixo a partir da raiz do projeto onde se encontra o arquivo dockerfile :
+docker build -t api:v1.
 
-Enfim, para gerar a imagem com a base de dados da api e com as tabelas necessarias no postgresql, execute o commando abaixo a partir da pasta SQLScripts :
-docker build -t postgres:api .
+Enfim, se preferir gerar a imagem com a base de dados da api e com as tabelas necessarias no postgresql manualmente, execute o commando abaixo a partir da pasta SQLScripts/Postgres :
+docker build -t postgres:api.
 
 Para testar se tudo funciona bem execute o commando :
 docker-compose up 
@@ -39,44 +39,36 @@ Il y a un équilibrage de charge en utilisant nginx, car il y a deux instances d
 
 Clonez le projet localement sur votre ordinateur avec la commande git clone.
 
-Pour générer l'image docker de l'api, nécessaire pour exécuter le docker-compose, exécutez la commande ci-dessous à partir de la racine du projet où se trouve le fichier dockerfile :
-docker build -t api:v1 .
+Définissez le mot de passe de l'utilisateur root postgres dans le fichier .env à la racine du projet. Ce mot de passe sera utilisé par le fichier docker-compose.yml pour générer l'image Docker de la base de données de test.
 
-Ensuite, définissez le mot de passe de l'utilisateur root postgres dans le fichier postgres-passwd depuis le dossier SQLScripts. Il sera copié à l'intérieur de l'image lorsqu'elle sera générée.
+N'oubliez pas de modifier également la chaîne de connexion des fichiers appsettings.json dans le dossier Configuration avec le mot de passe défini à l'étape précédente. Le dossier Configuration sera mappé à un volume du conteneur Docker de l'API afin de faciliter la configuration, si nécessaire.
 
-N'oubliez pas de modifier également la connectionstring des fichiers appsettings.json dans le dossier Configuration avec le mot de passe défini à l'étape précédente. Le dossier Configuration sera mappé dans un volume à l'intérieur du conteneur docker de l'api pour faciliter les configurations si nécessaire.
+Docker-compose a été configuré pour générer automatiquement les images, mais si vous préférez, vous pouvez exécuter la commande ci-dessous depuis la racine du projet où se trouve le fichier docker :
+docker build -t api:v1.
 
-Enfin, pour générer l'image avec la base de données de l'api et avec les tables nécessaires dans postgresql, exécutez la commande ci-dessous à partir du dossier SQLScripts :
-docker build -t postgres:api .
+Enfin, si vous préférez générer manuellement l'image avec la base de données API et les tables PostgreSQL nécessaires, exécutez la commande ci-dessous depuis le dossier SQLScripts/Postgres :
+docker build -t postgres:api.
 
-Pour tester si tout fonctionne bien, exécutez la commande :
-docker-compose up 
+Pour vérifier que tout fonctionne correctement, exécutez la commande :
+docker-compose up
 
-Ensuite, faites des requêtes à l'api en utilisant le point de terminaison à l'adresse http://localhost:9999/count-persons. Il retournera le nombre d'enregistrements pour l'entité Person.
+Ensuite, envoyez des requêtes à l'API via le point de terminaison http://localhost:9999/count-persons. Le nombre d'enregistrements pour l'entité Person sera renvoyé.
 
 English (en-us)
 
-A simple minimal API project in .NET 8 that demonstrates how to use the AutoCRUD extension.
+Clone the project locally on your computer using the git clone command.
 
-The API operates with resource limitations. This means that the CPU is limited to 2 cores and memory is limited to 4GB.
+Set the password for the postgres root user in the .env file at the project root. This password will be used by the docker-compose.yml file to build the test database Docker image.
 
-There is load balancing using nginx, as there are two instances of the API in this example.
+Remember to also modify the connectionstring in the appsettings.json files in the Configuration folder with the password you set in the previous step. The Configuration folder will be mapped to a volume in the API Docker container to facilitate configuration, if necessary.
 
-### Instructions
+Docker-compose has been configured to automatically build images, but if you prefer, you can run the following command from the root of the project where the docker file is located:
+docker build -t api:v1.
 
-Clone the project locally on your computer with the git clone command.
+Finally, if you prefer to manually build the image with the API database and the necessary PostgreSQL tables, run the following command from the SQLScripts/Postgres folder:
+docker build -t postgres:api.
 
-To generate the docker image of the api, necessary to run the docker-compose, execute the command below from the root of the project where the dockerfile is located: 
-docker build -t api:v1 .
-
-Next, set the password for the postgres root user in the postgres-passwd file from SQLScripts folder. It will be copied into the image when it is generated.
-
-Don’t forget to also modify the connectionstring of the appsettings.json files in the Configuration folder with the password defined in the previous step. The Configuration folder will be mapped in a volume inside the docker container of the api to facilitate the configurations if necessary.
-
-Finally, to generate the image with the api database and with the necessary tables in postgresql, execute the command below from the SQLScripts folder: 
-docker build -t postgres:api .
-
-To test if everything works well execute the command: 
+To verify that everything is working correctly, run the command:
 docker-compose up
 
-Then make requests to the api using the endpoint at the address http://localhost:9999/count-persons. It will return the number of records for the Person entity.
+Next, send requests to the API via the http://localhost:9999/count-persons endpoint. The number of records for the Person entity will be returned.
