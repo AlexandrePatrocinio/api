@@ -1,39 +1,33 @@
-services:
-  api1: # API - Instance 1
-    build: .
-    image: api:v1
-    volumes:
-      - ./Configuration:/app/Configuration    
-    environment:
-      ASPNETCORE_ENVIRONMENT: 'Development'
+x-api-common: &api-common
+  build:
+    context: .
+    args:
+      BUILDPLATFORM: linux/amd64
+  image: api:v1
+  volumes:
+    - ./Configuration:/app/Configuration
+  environment:
+    ASPNETCORE_ENVIRONMENT: ''
+  depends_on:
+    - db
+  deploy:
+    resources:
+      limits:
+        cpus: '0.35'
+        memory: '0.75GB'
+
+services: # API - Instances
+  api1:
+    <<: *api-common
     hostname: api1
-    depends_on:
-      - db
     ports:
       - "8080:8080"
-    deploy:
-      resources:
-        limits:
-          cpus: '0.35'
-          memory: '0.75GB'
 
-  api2: # API - Instance 2
-    build: .
-    image: api:v1
-    volumes:
-      - ./Configuration:/app/Configuration
-    environment:
-      ASPNETCORE_ENVIRONMENT: 'Development'    
+  api2:
+    <<: *api-common
     hostname: api2
-    depends_on:
-      - db
     ports:
       - "8081:8080"
-    deploy:
-      resources:
-        limits:
-          cpus: '0.35'
-          memory: '0.75GB'
 
   nginx: # Load Balancer
     image: nginx:latest
@@ -54,7 +48,7 @@ services:
     image: postgres:api
     environment:
       POSTGRES_DB: 'api'
-      POSTGRES_PASSWORD_FILE: '/run/secrets/postgres-passwd'
+      POSTGRES_PASSWORD: ${SA_PASSWORD}
     ports:
       - "5432:5432"    
     deploy:
@@ -74,4 +68,4 @@ services:
   #     resources:
   #       limits:
   #         cpus: '1'
-  #         memory: '3.0GB'
+  #         memory: '4.0GB'

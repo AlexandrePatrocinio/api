@@ -1,20 +1,20 @@
 # Learn about building .NET container images:
 # https://github.com/dotnet/dotnet-docker/blob/main/samples/README.md
+ARG BUILDPLATFORM
+
 FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-ARG TARGETARCH
 WORKDIR /source
 
 # Copy nuget.config first
-COPY nuget.config ./api/
+COPY nuget.config .
 
 # copy csproj and restore as distinct layers
-COPY *.csproj ./api/
-WORKDIR ./api
-RUN dotnet restore -a $TARGETARCH
+COPY *.csproj .
+RUN dotnet restore
 
 # copy and publish app and libraries
 COPY . .
-RUN dotnet publish -c release -a $TARGETARCH -o /app --self-contained
+RUN dotnet publish -c release -o /app --self-contained
 
 # final stage/image
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
