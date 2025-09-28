@@ -13,8 +13,14 @@ x-api-common: &api-common
   deploy:
     resources:
       limits:
-        cpus: '0.35'
-        memory: '0.75GB'
+        cpus: '0.375'
+        memory: '0.544GB'
+
+networks:
+  default:
+    name: api_net
+  tests:
+    name: tests_net
 
 services: # API - Instances
   api1:
@@ -22,13 +28,11 @@ services: # API - Instances
     hostname: api1
     ports:
       - "8080:8080"
-
   api2:
     <<: *api-common
     hostname: api2
     ports:
       - "8081:8080"
-
   nginx: # Load Balancer
     image: nginx:latest
     volumes:
@@ -38,11 +42,14 @@ services: # API - Instances
       - api2
     ports:
       - "9999:9999"
+    networks:
+      - default
+      - tests      
     deploy:
       resources:
         limits:
-          cpus: '0.3'
-          memory: '0.5GB'
+          cpus: '0.25'
+          memory: '0.448GB'
   db: # Postgres tests
     build: SQLScripts/Postgres/.
     image: postgres:api
@@ -55,7 +62,7 @@ services: # API - Instances
       resources:
         limits:
           cpus: '1'
-          memory: '2.0GB'
+          memory: '2.560GB'
   # db: # SQL Server tests
   #   build: SQLScripts/Sqlserver/.
   #   image: sqlserver:api
