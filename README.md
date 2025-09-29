@@ -4,11 +4,11 @@ Português (pt-br)
 
 Um projeto de uma minimal API simples no .NET 8 que demonstra como usar a extensão AutoCRUD.
 
-A API opera com limitações de recursos. Os requisítos deste projeto impoem a seguinte configuração: 
-    **- 2 CPUS** 
-    **- 4GB de RAM**
-    **- Atender o máximo de usuários simultâneos possível**
-    **- Tempo de reposta por requisição abaixo de 150 ms**
+### A API opera com limitações de recursos. Os requisítos deste projeto impoem a seguinte configuração: 
+- **2 CPUS** 
+- **4GB de RAM**
+- **Atender o máximo de usuários simultâneos possível**
+- **Tempo de reposta por requisição abaixo de 150 ms**
 
 Existe um balanceamento de carga usando o nginx, pois há duas instancias da API neste exemplo.
 
@@ -94,11 +94,11 @@ Français (fr-fr)
 
 Un simple projet d'API minimal dans .NET 8 qui montre comment utiliser l'extension AutoCRUD.
 
-L'API fonctionne avec des limitations de ressources. Les exigences de ce projet imposent la configuration suivante :
-    **- 2 CPU**
-    **- 4 Go de RAM**
-    **- Servir le maximum d'utilisateurs simultanés possible**
-    **- Temps de réponse par requête inférieur à 150 ms**
+### L'API fonctionne avec des limitations de ressources. Les exigences de ce projet imposent la configuration suivante :
+- **2 CPU**
+- **4 Go de RAM**
+- **Servir le maximum d'utilisateurs simultanés possible**
+- **Temps de réponse par requête inférieur à 150 ms**
 
 Il y a un équilibrage de charge en utilisant nginx, car il y a deux instances de l'API dans cet exemple.
 
@@ -184,11 +184,11 @@ English (en-us)
 
 A simple minimal API project in .NET 8 that demonstrates how to use the AutoCRUD extension.
 
-The API operates with resource limitations. The requirements of this project impose the following configuration:
-    **- 2 CPUs**
-    **- 4GB of RAM**
-    **- Serve the maximum possible number of simultaneous users**
-    **- Response time per request below 150 ms**
+### The API operates with resource limitations. The requirements of this project impose the following configuration:
+- **2 CPUs**
+- **4GB of RAM**
+- **Serve the maximum possible number of simultaneous users**
+- **Response time per request below 150 ms**
 
 There is load balancing using nginx, as there are two instances of the API in this example.
 
