@@ -269,3 +269,11 @@ The AutoCRUD library used in this API also allows the use of SQL Server database
 - **Avoids overload:** Limiting the pool prevents the database from being overloaded by too many simultaneous connections, which can cause slowness or blocking.
 - **Optimizes resources:** Ensures that connections are efficiently reused, reducing memory and CPU consumption in the database. After all, keeping the state of each open connection consumes a lot of memory, which is already scarce for the database engine to process read and write operations.
 - **Balance:** The ideal number depends on the resources allocated to the database and the expected volume of requests. For the limit of 2.560 GB of memory and 1 core, the ideal pool was between 50 and 850 simultaneous connections. This range allowed a peak of 430 users during the load test, keeping the response time per request below 150ms.
+
+### Load test results
+
+<img width="1376" height="537" alt="LoadTest results 2" src="https://github.com/user-attachments/assets/a78d9ae2-94f2-4e2b-9c5d-15823e009ce1" />
+
+<img width="1897" height="908" alt="LoadTest result Grafana" src="https://github.com/user-attachments/assets/93a58567-9022-460b-80e9-2580e1e53f77" />
+
+<img width="1918" height="1016" alt="Bd api - Person table" src="https://github.com/user-attachments/assets/810a9f0b-a89e-4c62-8968-ebf36d4bb7f2" />
