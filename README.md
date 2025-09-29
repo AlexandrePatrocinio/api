@@ -82,7 +82,7 @@ No arquivo `appsettings.json`, a connectionstring do PostgreSQL é um fator chav
   "dbApi_PG": "Server=db;Database=api;User Id=postgres;Password=<Password>;Port=5432;Minimum Pool Size=50;Maximum Pool Size=850;Include Error Detail=True",
 }
 
-A biblioteca AutoCRUD utilizada nesta api permite a utilização do banco de dados SQL Server igualmente. Porém este banco, apesar de mais robusto, consome mais recursos e neste cenário de uso seria proibitivo.
+A biblioteca AutoCRUD, utilizada nesta api, permite igualmente a integração com o banco de dados SQL Server. Porém este banco, apesar de mais robusto, consome mais recursos e neste cenário de uso seria proibitivo.
 
 ### Por que ajustar o pool?
 
@@ -172,7 +172,7 @@ Dans le fichier `appsettings.json`, la chaîne de connexion PostgreSQL est un fa
   "dbApi_PG": "Server=db;Database=api;User Id=postgres;Password=<Password>;Port=5432;Minimum Pool Size=50;Maximum Pool Size=850;Include Error Detail=True",
 }
 
-La bibliothèque AutoCRUD utilisée dans cette API permet également l'utilisation de la base de données SQL Server. Cependant, cette base, bien que plus robuste, consomme plus de ressources et dans ce scénario d'utilisation serait prohibitive.
+La bibliothèque AutoCRUD, utilisée dans cette API, permet également l'integration avec la base de données SQL Server. Cependant, cette base, bien que plus robuste, consomme plus de ressources et dans ce scénario d'utilisation serait prohibitive.
 
 ### Pourquoi ajuster le pool ?
 
@@ -262,7 +262,7 @@ In the `appsettings.json` file, the PostgreSQL connection string is a key factor
   "dbApi_PG": "Server=db;Database=api;User Id=postgres;Password=<Password>;Port=5432;Minimum Pool Size=50;Maximum Pool Size=850;Include Error Detail=True",
 }
 
-The AutoCRUD library used in this API also allows the use of SQL Server database. However, this database, although more robust, consumes more resources and in this usage scenario would be prohibitive.
+The AutoCRUD library, used in this API, also allows integration with the SQL Server database. However, this database, although more robust, consumes more resources and in this usage scenario would be prohibitive.
 
 ### Why adjust the pool?
 
