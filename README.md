@@ -82,7 +82,7 @@ No arquivo `appsettings.json`, a connectionstring do PostgreSQL é um fator chav
   "dbApi_PG": "Server=db;Database=api;User Id=postgres;Password=<Password>;Port=5432;Minimum Pool Size=50;Maximum Pool Size=850;Include Error Detail=True",
 }
 
-A biblioteca AutoCRUD utilisada nesta api permite a utilisação do banco de dados SQL Server igualmente. Porém este banco, apesar de mais robusto, consome mais recursos e neste cenário de uso seria proibitivo.
+A biblioteca AutoCRUD utilizada nesta api permite a utilização do banco de dados SQL Server igualmente. Porém este banco, apesar de mais robusto, consome mais recursos e neste cenário de uso seria proibitivo.
 
 ### Por que ajustar o pool?
 
