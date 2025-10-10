@@ -8,6 +8,8 @@ var env = Environment.GetEnvironmentVariables();
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.WebHost.ConfigureKestrel(options => options.ListenAnyIP(int.Parse(env["API_PORT"]?.ToString() ?? "8080")));
+
 var configuration = builder.Configuration.SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "Configuration"))
         .AddJsonFile("appsettings.json")
         .AddJsonFile($"appsettings.{env["ASPNETCORE_ENVIRONMENT"]}.json", optional: true, reloadOnChange: true)
