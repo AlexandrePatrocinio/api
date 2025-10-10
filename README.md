@@ -311,8 +311,10 @@ The AutoCRUD library, used in this API, also allows integration with the SQL Ser
 
 ### Load test results
 
-<img width="1376" height="537" alt="LoadTest results 2" src="https://github.com/user-attachments/assets/a78d9ae2-94f2-4e2b-9c5d-15823e009ce1" />
+<img width="1424" height="788" alt="Captura de tela 2025-10-10 154608" src="https://github.com/user-attachments/assets/7a6b2b98-d39f-447f-b982-89cbd8a18948" />
 
-<img width="1897" height="908" alt="LoadTest result Grafana" src="https://github.com/user-attachments/assets/93a58567-9022-460b-80e9-2580e1e53f77" />
+<img width="1382" height="535" alt="Captura de tela 2025-10-10 161855" src="https://github.com/user-attachments/assets/f6343f2e-20b4-4d55-ad2b-4c5572e727f9" />
 
-<img width="1918" height="1016" alt="Bd api - Person table" src="https://github.com/user-attachments/assets/810a9f0b-a89e-4c62-8968-ebf36d4bb7f2" />
+<img width="1897" height="899" alt="Captura de tela 2025-10-10 161951" src="https://github.com/user-attachments/assets/0cf462fa-1463-4deb-96fc-ae757a1d5a6e" />
+
+<img width="1918" height="1018" alt="Captura de tela 2025-10-10 162110" src="https://github.com/user-attachments/assets/70c23f0d-63fe-4ba7-8ba8-6444e7e50820" />
