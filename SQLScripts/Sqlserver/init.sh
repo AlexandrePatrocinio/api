@@ -30,4 +30,7 @@ fi
 echo "🚀 Running startup script..."
 /opt/mssql-tools18/bin/sqlcmd -S localhost -U SA -P "$MSSQL_SA_PASSWORD" -N -C -i /scripts/SqlServer_script.sql
 
+echo "🚀 Running tuning script..."
+/opt/mssql-tools18/bin/sqlcmd -S localhost -U SA -P "$MSSQL_SA_PASSWORD" -N -C -i /scripts/tuning_script.sql
+
 wait

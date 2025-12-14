@@ -1,13 +1,31 @@
 # Limits: 4 vCPUs, 8GB RAM
+
+# Setup : Intel Core ultra 7 155H 1.4GHz, 64GB RAM, 1TB NVMe SSD
+# Windos 11 Home WSL2 Ubuntu 24.04 LTS
+
+# Postgres results
 # Max simultaneous users tested: 400
 # Max RPS: ~4000
-# Avg Latency(p95): ~85ms
+# Avg Latency(p95): <85ms
+
+# Setup : Intel(R) Core(TM) i7-4510U CPU @ 2.00GHz, 16GB RAM, 480GB SATA SSD
+# Linux Zorin OS 18 (Base version: Ubuntu 24.04 LTS)
+
+# Postgres results
+# Max simultaneous users tested: 250
+# Max RPS: ~2400
+# Avg Latency(p95): <85ms
+
+# SQL Server results
+# Max simultaneous users tested: 150
+# Max RPS: ~1400
+# Avg Latency(p95): <85ms
+
 x-api-common: &api-common
   build:
     context: .
     args:
       BUILDPLATFORM: linux/amd64
-  image: api:v1
   volumes:
     - ./Configuration:/app/Configuration
   environment:
@@ -31,6 +49,7 @@ services:
   # API - Instances
   api1:
     <<: *api-common
+    image: api:v1    
     hostname: api1
     container_name: api1
     environment:
@@ -39,6 +58,7 @@ services:
 
   api2:
     <<: *api-common
+    image: api:v1    
     hostname: api2
     container_name: api2
     environment:
@@ -62,38 +82,38 @@ services:
           memory: '1.024GB'
 
   # PostgreSQL Database
-  db:
-    build: SQLScripts/Postgres/.
-    image: postgres:api
-    container_name: db
+  # db:
+  #   build: ./SQLScripts/Postgres
+  #   image: postgres:v1
+  #   container_name: db
+  #   environment:
+  #     POSTGRES_DB: 'api'
+  #     POSTGRES_PASSWORD: ${SA_PASSWORD}
+  #     POSTGRES_INITDB_ARGS: "--data-checksums"
+  #     POSTGRES_MAX_CONNECTIONS: '350'
+  #     POSTGRES_SHARED_BUFFERS: '1GB'
+  #     POSTGRES_WORK_MEM: '8MB'
+  #     POSTGRES_EFFECTIVE_CACHE_SIZE: '3GB'
+  #     POSTGRES_SYNCHRONOUS_COMMIT: 'off'
+  #   volumes:
+  #     - ./SQLScripts/Postgres/init.sh:/docker-entrypoint-initdb.d/init.sh:ro      
+  #   network_mode: host
+  #   cpuset: "2,3"
+  #   deploy:
+  #     resources:
+  #       limits:
+  #         cpus: '2'
+  #         memory: '4.096GB'
+  db: # SQL Server tests
+    build: ./SQLScripts/Sqlserver
+    image: sqlserver:api
     environment:
-      POSTGRES_DB: 'api'
-      POSTGRES_PASSWORD: ${SA_PASSWORD}
-      POSTGRES_INITDB_ARGS: "--data-checksums"
-      POSTGRES_MAX_CONNECTIONS: '350'
-      POSTGRES_SHARED_BUFFERS: '1GB'
-      POSTGRES_WORK_MEM: '8MB'
-      POSTGRES_EFFECTIVE_CACHE_SIZE: '3GB'
-      POSTGRES_SYNCHRONOUS_COMMIT: 'off'
-    volumes:
-      - ./SQLScripts/Postgres/init.sh:/docker-entrypoint-initdb.d/init.sh:ro      
+      ACCEPT_EULA: 'Y'
+      MSSQL_SA_PASSWORD: ${SA_PASSWORD}
+      MSSQL_MEMORY_LIMIT_MB: 3574
     network_mode: host
-    cpuset: "2,3"
     deploy:
       resources:
         limits:
           cpus: '2'
           memory: '4.096GB'
-  # db: # SQL Server tests
-  #   build: SQLScripts/Sqlserver/.
-  #   image: sqlserver:api
-  #   environment:
-  #     ACCEPT_EULA: 'Y'
-  #     MSSQL_SA_PASSWORD: ${SA_PASSWORD}
-  #   ports:
-  #     - "1433:1433"
-  #   deploy:
-  #     resources:
-  #       limits:
-  #         cpus: '1'
-  #         memory: '4.0GB'

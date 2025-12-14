@@ -3,6 +3,7 @@ FROM mcr.microsoft.com/mssql/server:latest
 ENV ACCEPT_EULA=Y
 
 COPY SqlServer_script.sql /scripts/SqlServer_script.sql
+COPY tuning_script.sql /scripts/tuning_script.sql
 COPY init.sh /scripts/init.sh
 
 EXPOSE 1433
