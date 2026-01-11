@@ -108,8 +108,8 @@ Français (fr-fr)
 Un simple projet d'API minimal dans .NET 8 qui montre comment utiliser l'extension AutoCRUD.
 
 L'API fonctionne avec des limitations de ressources :
-- **2 CPU**
-- **4 Go de RAM**
+- **4 CPU**
+- **8 Go de RAM**
 
 Les exigences de ce projet sont les suivantes :    
 - **Servir le maximum d'utilisateurs simultanés possible**
@@ -195,7 +195,7 @@ Cette configuration ne permet pas de scaler horizontalement les APIs (ajouter pl
 Dans le fichier « appsettings.json », la chaîne de connexion PostgreSQL est un élément clé de la configuration. Elle nous a permis d'affiner la base de données afin de limiter le nombre de connexions simultanées et d'éviter d'utiliser toute la mémoire utilisée par le moteur PostgreSQL. Vous trouverez ci-dessous la chaîne de connexion avec les valeurs minimale et maximale du pool de connexions après plusieurs tests de charge. Ces valeurs nous ont permis de maximiser le nombre d'utilisateurs simultanés et de minimiser le temps par requête. Puisque nous limitons le nombre maximal de connexions PostgreSQL à 350, j'ai défini un pool maximal de 160 par instance d'API. Ainsi, la somme des deux instances ne dépasse pas 320 connexions simultanées, laissant une marge de 30 connexions pour l'utilisation interne de PostgreSQL et les connexions administratives.
 
 "ConnectionStrings": {
-  "dbApi_PG": "Server=db;Database=api;User Id=postgres;Password=<Password>;Port=5432;Minimum Pool Size=50;Maximum Pool Size=850;Include Error Detail=True",
+  "dbApi_PG": "Server=db;Database=api;User Id=postgres;Password=<Password>;Port=5432;Minimum Pool Size=50;Maximum Pool Size=160;Include Error Detail=True",
 }
 
 La bibliothèque AutoCRUD, utilisée dans cette API, permet également l'integration avec la base de données SQL Server. Cependant, cette base, bien que plus robuste, consomme plus de ressources et dans ce scénario d'utilisation serait prohibitive.
@@ -211,8 +211,8 @@ English (en-us)
 A simple minimal API project in .NET 8 that demonstrates how to use the AutoCRUD extension.
 
 The API operates with resource limitations:
-- **2 CPUs**
-- **4GB of RAM**
+- **4 CPUs**
+- **8 GB of RAM**
 
 The requirements of this project are as follows:
 - **Serve the maximum possible number of simultaneous users**
@@ -298,7 +298,7 @@ This configuration does not allow horizontal scaling of the APIs (adding more in
 In the "appsettings.json" file, the PostgreSQL connection string is a key part of the configuration. It allowed us to fine-tune the database to limit the number of concurrent connections and avoid using all the memory used by the PostgreSQL engine. Below is the connection string with the minimum and maximum connection pool values ​​after several load tests. These values ​​allowed us to maximize the number of concurrent users and minimize the time per query. Since we limit the maximum number of PostgreSQL connections to 350, I set a maximum pool of 160 per API instance. This way, the sum of both instances does not exceed 320 concurrent connections, leaving a margin of 30 connections for internal PostgreSQL use and administrative connections.
 
 "ConnectionStrings": {
-  "dbApi_PG": "Server=db;Database=api;User Id=postgres;Password=<Password>;Port=5432;Minimum Pool Size=50;Maximum Pool Size=850;Include Error Detail=True",
+  "dbApi_PG": "Server=db;Database=api;User Id=postgres;Password=<Password>;Port=5432;Minimum Pool Size=50;Maximum Pool Size=160;Include Error Detail=True",
 }
 
 The AutoCRUD library, used in this API, also allows integration with the SQL Server database. However, this database, although more robust, consumes more resources and in this usage scenario would be prohibitive.
