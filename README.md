@@ -16,7 +16,7 @@ Existe um balanceamento de carga usando o nginx, pois há duas instancias da API
 
 ### Instruções
 
-Clone o projeto localmente em seu computador com o commando git clone.
+Clone o projeto localmente em seu computador com o commando: git clone https://github.com/AlexandrePatrocinio/api.git.
 
 Defina a senha do usuario root postgres no arquivo .env na raiz do projeto. Ele sera usado pelo arquivo docker-compose.yml para construir a imagem docker da base de dados de testes.
 
@@ -39,7 +39,7 @@ Este projeto utiliza Docker Compose para orquestrar múltiplos serviços necess�
 
 ## Serviços e Recursos Alocados
 
-Como esta api hospeda um serviço de CRUD então o objetivo é a manipulação de dados em uma base de dados. Portanto, a base de dados é o grande gargalo. Considerando as limitações de 4 CPUS e 8 GB de mémoria RAM, foi preciso balancear o cosumo destes recursos de forma a previlegear o serviço de BD e deixar ainda o suficiente para a operação da api e do balanceador de carga.
+Como esta api hospeda um serviço de CRUD então o objetivo é a manipulação de dados em uma base de dados. Portanto, a base de dados é o grande gargalo. Considerando as limitações de 4 CPUS e 8 GB de mémoria RAM, foi preciso balancear o consumo destes recursos de forma a previlegear o serviço de BD e deixar ainda o suficiente para a operação da api e do balanceador de carga.
 Os valores finais configurados foram encontrados de forma empírica, ou seja, testando na prática a api com um teste de carga utilizando as ferramentas k6 + Grafana + InfluxDB.
 
 Para ver como o teste de carga foi criado queira verificar o projeto LoadTests no meu github: https://github.com/AlexandrePatrocinio/LoadTests.
@@ -119,7 +119,7 @@ Il y a un équilibrage de charge en utilisant nginx, car il y a deux instances d
 
 ### Instructions
 
-Clonez le projet localement sur votre ordinateur avec la commande git clone.
+Clonez le projet localement sur votre ordinateur avec la commande git clone : git clone https://github.com/AlexandrePatrocinio/api.git.
 
 Définissez le mot de passe de l'utilisateur root postgres dans le fichier .env à la racine du projet. Ce mot de passe sera utilisé par le fichier docker-compose.yml pour générer l'image Docker de la base de données de test.
 
@@ -222,7 +222,7 @@ There is load balancing using nginx, as there are two instances of the API in th
 
 ### Instructions
 
-Clone the project locally on your computer with the git clone command.
+Clone the project locally on your computer with the git clone command: git clone https://github.com/AlexandrePatrocinio/api.git.
 
 To generate the docker image of the api, necessary to run the docker-compose, execute the command below from the root of the project where the dockerfile is located: 
 docker build -t api:v1 .
